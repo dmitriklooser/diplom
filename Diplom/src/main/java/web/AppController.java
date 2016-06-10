@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import db.DbPool;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2773435f6b92299aa4fbe3fd8c61c61f223961df
 public class AppController extends HttpServlet{
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
