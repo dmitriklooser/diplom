@@ -4,11 +4,11 @@ package geneticalg;
  * Simple Room abstraction -- used to store the room capacity and compare against the student Group's size.
  */
 public class Room {
-	public enum TypeRoom{
-		AUDITORIA,
-		LABORATORIA,
-		SPORT
-	}
+    public enum TypeRoom{
+        AUDITORIA,
+        LABORATORIA,
+        SPORT
+    }
 	private final int roomId;
 	private final String roomNumber;
 	private final int capacity;
@@ -24,11 +24,11 @@ public class Room {
 	 * @param capacity
 	 *            The room capacity
 	 */
-	public Room(int roomId, String roomNumber, int capacity, TypeRoom type) {
+	public Room(int roomId, String roomNumber, int capacity, TypeRoom typeRoom) {
 		this.roomId = roomId;
 		this.roomNumber = roomNumber;
 		this.capacity = capacity;
-		this.typeRoom = type;
+		this.typeRoom = typeRoom;
 	}
 
 	/**
