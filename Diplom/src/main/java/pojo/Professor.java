@@ -1,6 +1,6 @@
 package pojo;
 
-public class Lessons {
+public class Professor {
     private int id;
     private String name;
     
@@ -12,7 +12,13 @@ public class Lessons {
        return id;
    }
     
+    public void setName(String name){
+        this.name = name;
+   }
     
+    public String getName(){
+       return name;
+   }
     
    
 }
