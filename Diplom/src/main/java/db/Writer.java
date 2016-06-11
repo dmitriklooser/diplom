@@ -8,6 +8,7 @@ import geneticalg.Module;
 import geneticalg.Professor;
 import geneticalg.Room;
 import geneticalg.Timeslot;
+import pojo.Lessons;
 
 public class Writer {
     private static final String INS_MODULE = "insert into Module (code, name, typeroomid) " +
@@ -20,7 +21,7 @@ public class Writer {
             " values (?)";
     private static final String INS_TIMESLOT = "insert into Timeslot (time, day) " +
             " values (?, ?)";
-    private static final String INS_LESSON = "insert into Lesson (groupid, moduleid, professorid, roomid, timeslotid) " +
+    private static final String INS_LESSONS = "insert into Lesson (groupid, moduleid, professorid, roomid, timeslotid) " +
             " values (?, ?, ?, ?, ?)";
 
     private DB db = new DB();
@@ -80,6 +81,21 @@ public class Writer {
                 int idx = 1;
                 pStmt.setInt(idx++, tmsl.getTime().getHour());
                 pStmt.setString(idx++, tmsl.getDay().name());
+            }catch(SQLException ex){
+                ex.toString();
+            }
+        });
+    }
+	
+	public void writeLessons(final Lessons lss){
+        db.write(INS_LESSONS, (pStmt)->{
+            try{
+                int idx = 1;
+                pStmt.setInt(idx++, lss.getGrp().getId());
+                pStmt.setInt(idx++, lss.getModule().getId());
+                pStmt.setInt(idx++, lss.getProfessor().getId());
+                pStmt.setInt(idx++, lss.getRoom().getId());
+                pStmt.setInt(idx++, lss.getTimeslot().getId());
             }catch(SQLException ex){
                 ex.toString();
             }

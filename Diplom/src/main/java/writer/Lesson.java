@@ -4,10 +4,6 @@ import java.time.DayOfWeek;
 import java.time.LocalTime;
 import java.util.Comparator;
 
-import geneticalg.Professor;
-import geneticalg.Room;
-
-
 public class Lesson {
 
     private DayOfWeek day;

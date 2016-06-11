@@ -21,6 +21,7 @@ public class Reader {
     private static final String READ_ALL_TIMESLOT = "select id, time, day from Timeslot";
     private static final String READ_PROFESOR_IDS = "select professorId from ModProf where moduleId=";
     private static final String READ_MODULE_IDS = "select moduleId from GrpMod where groupId=";
+    private static final String READ_ALL_LESSONS = "select moduleId from GrpMod where groupId=";
     private DB db = new DB();
     
 	private int[] readIds(String sql){
@@ -110,7 +111,6 @@ public class Reader {
                                          int idx = 1;
                                          int id = rs.getInt(idx++);
                                          LocalTime time = LocalTime.of(rs.getInt(idx++), 0);
-                                         //LocalTime time = rs.getString(idx++); //rs.setTime(LocalTime.of(.getClass().getClass().getInt(idx++), 0))
                                          DayOfWeek day = DayOfWeek.valueOf(rs.getString(idx++)); 
                                          Timeslot ts = new Timeslot(id, time, day);
                                         return ts;
