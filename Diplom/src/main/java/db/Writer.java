@@ -11,7 +11,7 @@ import geneticalg.Room;
 import geneticalg.Timeslot;
 
 public class Writer {
-    private static final String INS_MODULE = "insert into Module (code, name, typeroomid) " +
+    private static final String INS_MODULE = "insert into Module (code, name, typeRoom) " +
                                              " values (?, ?, ?)";
     private static final String INS_GROUP = "insert into Group (id, groupSize) " +
             " values (?, ?)";
@@ -19,7 +19,7 @@ public class Writer {
             " values (?, ?, ?)";
     private static final String INS_PROFESSOR = "insert into Professor (professorName) " +
             " values (?)";
-    private static final String INS_TIMESLOT = "insert into Timeslot (time, day) " +
+    private static final String INS_TIMESLOT = "insert into Timeslot (lessontime, day) " +
             " values (?, ?)";
     private static final String INS_LESSONS = "insert into Lesson (groupid, moduleid, professorid, roomid, timeslotid) " +
             " values (?, ?, ?, ?, ?)";

@@ -16,11 +16,11 @@ import web.Cache;
 import geneticalg.Timeslot;
 
 public class Reader {
-    private static final String READ_ALL_MODULE = "select id, code, name, typeroomid from Module";
+    private static final String READ_ALL_MODULE = "select id, code, name, typeRoom from Module";
     private static final String READ_ALL_GROUP = "select id, groupSize from Grp";
-    private static final String READ_ALL_ROOM = "select id, number, capacity, typeRoomId from Room";
+    private static final String READ_ALL_ROOM = "select id, number, capacity, typeRoom from Room";
     private static final String READ_ALL_PROFESSOR = "select id, name from Professor";
-    private static final String READ_ALL_TIMESLOT = "select id, time, day from Timeslot";
+    private static final String READ_ALL_TIMESLOT = "select id, lessontime, day from Timeslot";
     private static final String READ_PROFESOR_IDS = "select professorId from ModProf where moduleId=";
     private static final String READ_MODULE_IDS = "select moduleId from GrpMod where groupId=";
     private static final String READ_ALL_LESSONS = "select groupId, moduleId, professorId, roomId, timeslotId from Lessons";
