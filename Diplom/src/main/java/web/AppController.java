@@ -23,7 +23,7 @@ public class AppController extends HttpServlet{
 	
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
-		LinkedList<String> lst; 
+		//LinkedList<String> lst; 
 		forwardTo("/school2.jsp", req, resp);
 	}
 

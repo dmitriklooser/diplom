@@ -22,7 +22,7 @@ public class DB {
 			String url = "jdbc:postgresql://localhost:5432/timetable";
 			Properties props = new Properties();
 			props.setProperty("user","postgres");
-			props.setProperty("password","postgres");
+			props.setProperty("password","postgre");
 			props.setProperty("ssl","false");
 			Connection conn = DriverManager.getConnection(url, props);
 			return conn;
