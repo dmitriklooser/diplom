@@ -67,6 +67,7 @@ public class DB {
 		Connection conn = null;
 		PreparedStatement pStmt = null;
 		try{
+			conn = getConnection();
 			pStmt = conn.prepareStatement(sql);
 			setter.accept(pStmt);
 			pStmt.execute();
@@ -80,4 +81,8 @@ public class DB {
 		}
 	}
 	
+	public void run(String sql){
+		Connection conn = null;
+		Statement stmt = null;
+	}
 }//class DB 
