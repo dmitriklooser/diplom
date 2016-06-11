@@ -1,5 +1,7 @@
 package geneticalg;
 
+import java.util.Comparator;
+
 public class Lessons {
     private Group gro;
     private Module mod;
@@ -47,5 +49,13 @@ public class Lessons {
        return tmslt;
    }
     
+    private static class ByDayComparator implements Comparator<Lessons>{
+
+        @Override
+        public int compare(Lessons l1, Lessons l2) {
+            return l1.getTimeslot().getDay().compareTo(l2.getTimeslot().getDay());
+        }
+        
+    }//class ByDayComparator 
    
 }

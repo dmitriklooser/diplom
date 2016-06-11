@@ -5,8 +5,6 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
 
-import geneticalg.Room.TypeRoom;
-import writer.TimetableWriter;
 
 /**
  * Don't be daunted by the number of classes in this chapter -- most of them are
@@ -74,11 +72,11 @@ public class TimetableGA {
 
         // Print fitness
         timetable.createClasses(population.getFittest(0));
-        TimetableWriter printer = new TimetableWriter();
-        Map<Group, List<Lesson>> allLessons = printer.fillLessons(timetable);
-        Group grp = allLessons.keySet().iterator().next();
-        List<Lesson> lessons = allLessons.get(grp);
-        printer.write(grp, lessons);
+//        TimetableWriter printer = new TimetableWriter();
+//        Map<Group, List<Lessons>> allLessons = printer.fillLessons(timetable);
+//        Group grp = allLessons.keySet().iterator().next();
+//        List<Lessons> lessons = allLessons.get(grp);
+//        printer.write(grp, lessons);
 //        System.out.println();
 //        System.out.println("Solution found in " + generation + " generations");
 //        System.out.println("Final solution fitness: " + population.getFittest(0).getFitness());
@@ -118,55 +116,55 @@ public class TimetableGA {
 		Timetable timetable = new Timetable();
 
 		// Set up rooms
-		timetable.addRoom(1, "A1", 15, TypeRoom.AUDITORIA);
-		timetable.addRoom(2, "B1", 30, TypeRoom.LABORATORIA);
-		timetable.addRoom(4, "D1", 20, TypeRoom.AUDITORIA);
-		timetable.addRoom(5, "F1", 25, TypeRoom.SPORT);
-
-		// Set up timeslots
-		timetable.addTimeslot(1, LocalTime.of(9, 0), DayOfWeek.MONDAY );
-		timetable.addTimeslot(2, LocalTime.of(11, 0), DayOfWeek.MONDAY);
-		timetable.addTimeslot(3, LocalTime.of(13, 0),  DayOfWeek.MONDAY);
-		timetable.addTimeslot(4, LocalTime.of(9, 0), DayOfWeek.TUESDAY);
-		timetable.addTimeslot(5, LocalTime.of(11, 0), DayOfWeek.TUESDAY);
-		timetable.addTimeslot(6, LocalTime.of(13, 0), DayOfWeek.TUESDAY);
-		timetable.addTimeslot(7, LocalTime.of(9, 0), DayOfWeek.WEDNESDAY);
-		timetable.addTimeslot(8, LocalTime.of(11, 0), DayOfWeek.WEDNESDAY);
-		timetable.addTimeslot(9, LocalTime.of(13, 0), DayOfWeek.WEDNESDAY);
-		timetable.addTimeslot(10, LocalTime.of(9, 0), DayOfWeek.THURSDAY);
-		timetable.addTimeslot(11, LocalTime.of(11, 0), DayOfWeek.THURSDAY);
-		timetable.addTimeslot(12, LocalTime.of(13, 0), DayOfWeek.THURSDAY);
-		timetable.addTimeslot(13, LocalTime.of(9, 0), DayOfWeek.FRIDAY);
-		timetable.addTimeslot(14, LocalTime.of(11, 0), DayOfWeek.FRIDAY);
-		timetable.addTimeslot(15, LocalTime.of(13, 0), DayOfWeek.FRIDAY);
-
-		// Set up professors
-		timetable.addProfessor(1, "Dr P Smith");
-		timetable.addProfessor(2, "Mrs E Mitchell");
-		timetable.addProfessor(3, "Dr R Williams");
-		timetable.addProfessor(4, "Mr A Thompson");
-
-		// Set up modules and define the professors that teach them
-		timetable.addModule(1, "cs1", "Computer Science", new int[] { 1, 2 }, TypeRoom.LABORATORIA);
-		timetable.addModule(2, "en1", "English", new int[] { 1, 3 }, TypeRoom.AUDITORIA);
-		timetable.addModule(3, "ma1", "Maths", new int[] { 1, 2 }, TypeRoom.AUDITORIA);
-		timetable.addModule(4, "ph1", "Physics", new int[] { 3, 4 }, TypeRoom.LABORATORIA);
-		timetable.addModule(5, "hi1", "chemistry", new int[] { 4 }, TypeRoom.LABORATORIA);
-		timetable.addModule(6, "dr1", "physical education", new int[] { 1, 4 }, TypeRoom.SPORT);
-
-		// Set up student groups and the modules they take.
-		timetable.addGroup(1, 10, new int[] { 1, 3, 4 });
-		timetable.addGroup(2, 30, new int[] { 2, 3, 5, 6 });
-		timetable.addGroup(3, 18, new int[] { 3, 4, 5 });
-		timetable.addGroup(4, 25, new int[] { 1, 4 });
-		timetable.addGroup(5, 20, new int[] { 2, 3, 5 });
-		timetable.addGroup(6, 22, new int[] { 1, 4, 5 });
-		timetable.addGroup(7, 16, new int[] { 1, 3 });
-		timetable.addGroup(8, 18, new int[] { 2, 6 });
-		timetable.addGroup(9, 24, new int[] { 1, 6 });
-		timetable.addGroup(10, 25, new int[] { 3, 4 });
+//		timetable.addRoom(1, "A1", 15, TypeRoom.AUDITORIA);
+//		timetable.addRoom(2, "B1", 30, TypeRoom.LABORATORIA);
+//		timetable.addRoom(4, "D1", 20, TypeRoom.AUDITORIA);
+//		timetable.addRoom(5, "F1", 25, TypeRoom.SPORT);
+//
+//		// Set up timeslots
+//		timetable.addTimeslot(1, LocalTime.of(9, 0), DayOfWeek.MONDAY );
+//		timetable.addTimeslot(2, LocalTime.of(11, 0), DayOfWeek.MONDAY);
+//		timetable.addTimeslot(3, LocalTime.of(13, 0),  DayOfWeek.MONDAY);
+//		timetable.addTimeslot(4, LocalTime.of(9, 0), DayOfWeek.TUESDAY);
+//		timetable.addTimeslot(5, LocalTime.of(11, 0), DayOfWeek.TUESDAY);
+//		timetable.addTimeslot(6, LocalTime.of(13, 0), DayOfWeek.TUESDAY);
+//		timetable.addTimeslot(7, LocalTime.of(9, 0), DayOfWeek.WEDNESDAY);
+//		timetable.addTimeslot(8, LocalTime.of(11, 0), DayOfWeek.WEDNESDAY);
+//		timetable.addTimeslot(9, LocalTime.of(13, 0), DayOfWeek.WEDNESDAY);
+//		timetable.addTimeslot(10, LocalTime.of(9, 0), DayOfWeek.THURSDAY);
+//		timetable.addTimeslot(11, LocalTime.of(11, 0), DayOfWeek.THURSDAY);
+//		timetable.addTimeslot(12, LocalTime.of(13, 0), DayOfWeek.THURSDAY);
+//		timetable.addTimeslot(13, LocalTime.of(9, 0), DayOfWeek.FRIDAY);
+//		timetable.addTimeslot(14, LocalTime.of(11, 0), DayOfWeek.FRIDAY);
+//		timetable.addTimeslot(15, LocalTime.of(13, 0), DayOfWeek.FRIDAY);
+//
+//		// Set up professors
+//		timetable.addProfessor(1, "Dr P Smith");
+//		timetable.addProfessor(2, "Mrs E Mitchell");
+//		timetable.addProfessor(3, "Dr R Williams");
+//		timetable.addProfessor(4, "Mr A Thompson");
+//
+//		// Set up modules and define the professors that teach them
+//		timetable.addModule(1, "cs1", "Computer Science", new int[] { 1, 2 }, TypeRoom.LABORATORIA);
+//		timetable.addModule(2, "en1", "English", new int[] { 1, 3 }, TypeRoom.AUDITORIA);
+//		timetable.addModule(3, "ma1", "Maths", new int[] { 1, 2 }, TypeRoom.AUDITORIA);
+//		timetable.addModule(4, "ph1", "Physics", new int[] { 3, 4 }, TypeRoom.LABORATORIA);
+//		timetable.addModule(5, "hi1", "chemistry", new int[] { 4 }, TypeRoom.LABORATORIA);
+//		timetable.addModule(6, "dr1", "physical education", new int[] { 1, 4 }, TypeRoom.SPORT);
+//
+//		// Set up student groups and the modules they take.
+//		timetable.addGroup(1, 10, new int[] { 1, 3, 4 });
+//		timetable.addGroup(2, 30, new int[] { 2, 3, 5, 6 });
+//		timetable.addGroup(3, 18, new int[] { 3, 4, 5 });
+//		timetable.addGroup(4, 25, new int[] { 1, 4 });
+//		timetable.addGroup(5, 20, new int[] { 2, 3, 5 });
+//		timetable.addGroup(6, 22, new int[] { 1, 4, 5 });
+//		timetable.addGroup(7, 16, new int[] { 1, 3 });
+//		timetable.addGroup(8, 18, new int[] { 2, 6 });
+//		timetable.addGroup(9, 24, new int[] { 1, 6 });
+//		timetable.addGroup(10, 25, new int[] { 3, 4 });
 		return timetable;
 	}
 }
-//1)оценить, чего не хватает(аудит, преп и тд)
-//2)кол-во часов в неделю
+//1)пїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ(пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅ)
+//2)пїЅпїЅпїЅ-пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ

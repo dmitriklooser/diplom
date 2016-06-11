@@ -7,10 +7,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import geneticalg.Group;
+import geneticalg.Lessons;
 import geneticalg.Module;
 import geneticalg.Professor;
 import geneticalg.Room;
 import geneticalg.Room.TypeRoom;
+import web.Cache;
 import geneticalg.Timeslot;
 
 public class Reader {
@@ -21,7 +23,7 @@ public class Reader {
     private static final String READ_ALL_TIMESLOT = "select id, time, day from Timeslot";
     private static final String READ_PROFESOR_IDS = "select professorId from ModProf where moduleId=";
     private static final String READ_MODULE_IDS = "select moduleId from GrpMod where groupId=";
-    private static final String READ_ALL_LESSONS = "select moduleId from GrpMod where groupId=";
+    private static final String READ_ALL_LESSONS = "select groupId, moduleId, professorId, roomId, timeslotId from Lessons";
     private DB db = new DB();
     
 	private int[] readIds(String sql){
@@ -120,7 +122,28 @@ public class Reader {
                                  });
     }
 	
-  	
+    public List<Lessons> readAllLessons(Cache cache){
+
+    	return db.read(READ_ALL_LESSONS, (rs)->
+									        {try{
+									               int idx = 1;
+									               int groupId = rs.getInt(idx++);
+									               int moduleId = rs.getInt(idx++);
+									               int professorId = rs.getInt(idx++);
+									               int roomId = rs.getInt(idx++);
+									               int timeslotId = rs.getInt(idx++);
+									               Lessons ls = new Lessons();
+									               ls.setGroup(cache.GROUP_CACHE.get(groupId));
+									               ls.setModule(cache.MODULE_CACHE.get(moduleId));
+									               ls.setProfessor(cache.PROFESSOR_CACHE.get(professorId));
+									               ls.setRoom(cache.ROOM_CACHE.get(roomId));
+									               ls.setTimeslot(cache.TIMESLOT_CACHE.get(timeslotId));
+									              return ls;
+									         }catch(SQLException ex){
+									             return null;
+									         }
+									       });
+    }
 }
 
 // class Reader 

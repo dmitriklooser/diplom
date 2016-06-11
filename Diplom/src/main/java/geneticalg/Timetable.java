@@ -114,8 +114,9 @@ public class Timetable {
 	 * @param module
 	 * @param professorIds
 	 */
-	public void addModule(int moduleId, String moduleCode, String module, int professorIds[], TypeRoom needlab) {
-		this.modules.put(moduleId, new Module(moduleId, moduleCode, module, professorIds, needlab));
+	//public void addModule(int moduleId, String moduleCode, String module, int professorIds[], TypeRoom needlab) {
+	public void addModule(Module module) {
+		this.modules.put(module.getId(), module);
 	}
 
 	/**
@@ -125,8 +126,9 @@ public class Timetable {
 	 * @param groupSize
 	 * @param moduleIds
 	 */
-	public void addGroup(int groupId, int groupSize, int moduleIds[]) {
-		this.groups.put(groupId, new Group(groupId, groupSize, moduleIds));
+	//public void addGroup(int groupId, int groupSize, int moduleIds[]) {
+	public void addGroup(Group group) {
+		this.groups.put(group.getId(), group);
 		this.numClasses = 0;
 	}
 

@@ -19,7 +19,7 @@ CREATE TABLE Grp
 );
 
 CREATE TABLE Module (
-Id serial,
+id serial,
 code name NOT NULL,
 name varchar(5) NOT NULL,
 typeRoom varchar(20),
@@ -65,17 +65,14 @@ CONSTRAINT PK_Timeslot PRIMARY KEY (id)
 
 CREATE TABLE Lessons (
 groupId integer,
-module integer,
-professor integer,
-room integer,
+moduleId integer,
+professorId integer,
+roomId integer,
 timeslotId integer,
 CONSTRAINT PK_Lessons PRIMARY KEY (groupId),
 CONSTRAINT FK_Lessons_Grp FOREIGN KEY (groupId) REFERENCES Grp(id),
-CONSTRAINT FK_Lessons_Timeslot FOREIGN KEY (timeslotId) REFERENCES Timeslot(id)
+CONSTRAINT FK_Lessons_Timeslot FOREIGN KEY (timeslotId) REFERENCES Timeslot(id),
+CONSTRAINT FK_Lessons_Module FOREIGN KEY (moduleId) REFERENCES Module(id),
+CONSTRAINT FK_Lessons_Professor FOREIGN KEY (professorId) REFERENCES Professor(id),
+CONSTRAINT FK_Lessons_Room FOREIGN KEY (roomId) REFERENCES Room(id)
 );
-/*заполнение таблицы TypeRoom*/
-INSERT INTO TypeRoom (type) 
-   VALUES ('Аудитория'),
-		('Лаборатория'),
-		('Спортзал'),
-		('Компьютерный класс');

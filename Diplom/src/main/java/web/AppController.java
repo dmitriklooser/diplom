@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-@WebServlet(name="Controller", urlPatterns={"/main"})
+@WebServlet(name="Controller", urlPatterns={"/main"}, loadOnStartup=1)
 public class AppController extends HttpServlet{
+	private Cache cache = new Cache();
+	
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
 		req.getParameter("");
@@ -27,6 +29,20 @@ public class AppController extends HttpServlet{
 
 	
 	private void forwardTo(String target, HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
-		getServletContext().getRequestDispatcher(target).forward(req, resp);
+		getServletContext().getRequestDispatcher(target).forward(req, resp);super.init();
 	}
+
+	@Override
+    public void init() throws ServletException {
+		super.init();
+		cache.MODULE_CACHE.load(); 
+		cache.PROFESSOR_CACHE.load();
+		cache.ROOM_CACHE.load();
+		cache.TIMESLOT_CACHE.load();
+		cache.GROUP_CACHE.load();
+		cache.loadAllTimetables();
+		
+    }
+
+	
 }// class AppController 
