@@ -1,30 +1,126 @@
 package db;
 
 import java.sql.SQLException;
+import java.time.DayOfWeek;
+import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.List;
 
+import geneticalg.Group;
 import geneticalg.Module;
+import geneticalg.Professor;
+import geneticalg.Room;
 import geneticalg.Room.TypeRoom;
+import geneticalg.Timeslot;
 
 public class Reader {
-	private DB db = new DB();
-	
+    private static final String READ_ALL_MODULE = "select id, code, name, typeroomid from Module";
+    private static final String READ_ALL_GROUP = "select id, groupSize from Grp";
+    private static final String READ_ALL_ROOM = "select id, number, capacity, typeRoomId from Room";
+    private static final String READ_ALL_PROFESSOR = "select id, name from Professor";
+    private static final String READ_ALL_TIMESLOT = "select id, time, day from Timeslot";
+    private static final String READ_PROFESOR_IDS = "select professorId from ModProf where moduleId=";
+    private static final String READ_MODULE_IDS = "select moduleId from GrpMod where groupId=";
+    private DB db = new DB();
+    
+	private int[] readIds(String sql){
+	    return db.read(sql, (rs)->
+            	            {  try{
+            	                    int id = rs.getInt(1);
+            	                    return id;
+            	                }catch(SQLException ex){
+            	                    return null;
+            	                }
+            	            }).stream().mapToInt((id)->id.intValue()).toArray();
+
+	}
+    
 	public List<Module> readAllModules(){
-		String sql = "select id, code, name, typeroomid from Module";
-		return db.read(sql, (rs)->
+		
+		return db.read(READ_ALL_MODULE, (rs)->
 			   					  {try{
 				   						 int idx = 1;
 										 int id = rs.getInt(idx++);
 										 String moduleCode = rs.getString(idx++);
 										 String module = rs.getString(idx++);
 										 TypeRoom typeRoom = TypeRoom.valueOf(rs.getString(idx++)); 
-										 Module md = null;//new Module(id, moduleCode, module, typeRoom);
+										 Module md = new Module(id, moduleCode, module, typeRoom);
+										 int[] professorIds = readIds(READ_PROFESOR_IDS + id);
+										 md.setProfessorIds(professorIds);
 										return md;
 			   					   }catch(SQLException ex){
 			   						   return null;
 			   					   }
-							 });
+							     });
 	}
 	
+    public List<Group> readAllGroups(){
+            
+            return db.read(READ_ALL_GROUP, (rs)->
+                                      {try{
+                                             int idx = 1;
+                                             int id = rs.getInt(idx++);
+                                             int groupSize = rs.getInt(idx++); 
+                                             Group gr = new Group(id, groupSize);
+                                             int[] moduleIds = readIds(READ_MODULE_IDS + id);
+                                             gr.setModuleIds(moduleIds);
+                                            return gr;
+                                       }catch(SQLException ex){
+                                           return null;
+                                       }
+                                     });
+        }
+    
+    public List<Room> readAllRooms(){
+        
+        return db.read(READ_ALL_ROOM, (rs)->
+                                  {try{
+                                         int idx = 1;
+                                         int id = rs.getInt(idx++);
+                                         String roomNumber = rs.getString(idx++); 
+                                         int capacity = rs.getInt(idx++);
+                                         TypeRoom typeRoom = TypeRoom.valueOf(rs.getString(idx++));
+                                         Room ro = new Room(id, roomNumber, capacity, typeRoom);
+                                        return ro;
+                                   }catch(SQLException ex){
+                                       return null;
+                                   }
+                                 });
+    }
+    
+    public List<Professor> readAllProfessors(){
+            
+            return db.read(READ_ALL_PROFESSOR, (rs)->
+                                      {try{
+                                             int idx = 1;
+                                             int id = rs.getInt(idx++);
+                                             String professorName = rs.getString(idx++); 
+                                             Professor pro = new Professor(id, professorName);
+                                            return pro;
+                                       }catch(SQLException ex){
+                                           return null;
+                                       }
+                                     });
+        }
+    
+    public List<Timeslot> readAllTimeslots(){
+        
+        return db.read(READ_ALL_TIMESLOT, (rs)->
+                                  {try{
+                                         int idx = 1;
+                                         int id = rs.getInt(idx++);
+                                         LocalTime time = LocalTime.of(rs.getInt(idx++), 0);
+                                         //LocalTime time = rs.getString(idx++); //rs.setTime(LocalTime.of(.getClass().getClass().getInt(idx++), 0))
+                                         DayOfWeek day = DayOfWeek.valueOf(rs.getString(idx++)); 
+                                         Timeslot ts = new Timeslot(id, time, day);
+                                        return ts;
+                                   }catch(SQLException ex){
+                                       return null;
+                                   }
+                                 });
+    }
 	
-}// class Reader 
+  	
+}
+
+// class Reader 

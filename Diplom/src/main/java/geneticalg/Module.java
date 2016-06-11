@@ -9,7 +9,7 @@ public class Module {
 	private final int moduleId;
     private final String moduleCode;
     private final String module;
-    private final int professorIds[];
+    private int professorIds[];
     private final TypeRoom needlab;
     
     /**
@@ -20,11 +20,10 @@ public class Module {
      * @param module
      * @param professorIds
      */
-    public Module(int moduleId, String moduleCode, String module, int professorIds[], TypeRoom needlab){
+    public Module(int moduleId, String moduleCode, String module, TypeRoom needlab){
         this.moduleId = moduleId;
         this.moduleCode = moduleCode;
         this.module = module;
-        this.professorIds = professorIds;
         this.needlab = needlab;
     }
     
@@ -55,6 +54,12 @@ public class Module {
         return this.module;
     }
     
+    public int[] getProfessorIds(){
+        return professorIds;
+    }
+    public void setProfessorIds(int[] ids){
+        this.professorIds = ids;
+    }
     /**
      * Get random professor Id
      * 
