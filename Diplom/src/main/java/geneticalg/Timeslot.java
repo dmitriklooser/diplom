@@ -34,7 +34,7 @@ public class Timeslot {
      * 
      * @return timeslotId
      */
-    public int getTimeslotId(){
+    public int getId(){
         return this.timeslotId;
     }
     

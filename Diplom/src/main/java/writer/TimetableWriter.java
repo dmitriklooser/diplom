@@ -16,6 +16,8 @@ import java.util.stream.Collectors;
 
 import geneticalg.Clazz;
 import geneticalg.Group;
+import geneticalg.Lesson;
+import geneticalg.ModRoomTeach;
 import geneticalg.Timetable;
 
 

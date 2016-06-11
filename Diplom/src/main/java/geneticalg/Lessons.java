@@ -1,17 +1,17 @@
-package pojo;
+package geneticalg;
 
 public class Lessons {
-    private Grp gro;
+    private Group gro;
     private Module mod;
     private Professor pro;
     private Room room;
     private Timeslot tmslt;
     
-    public void setGrp(Grp gro){
+    public void setGroup(Group gro){
         this.gro = gro;
    }
     
-    public Grp getGrp(){
+    public Group getGroup(){
        return gro;
    }
     

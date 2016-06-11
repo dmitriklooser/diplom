@@ -26,7 +26,7 @@ public class Group {
      * 
      * @return groupId
      */
-    public int getGroupId(){
+    public int getId(){
         return this.groupId;
     }
     
@@ -56,12 +56,12 @@ public class Group {
     public boolean equals(Object obj){
         if(!(obj instanceof Group))return false;
         Group out = (Group)obj;
-        return (out.getGroupId() == this.getGroupId());
+        return (out.getId() == this.getId());
     }
     
     @Override
     public int hashCode(){
-        return getGroupId();
+        return getId();
     }
     
 }

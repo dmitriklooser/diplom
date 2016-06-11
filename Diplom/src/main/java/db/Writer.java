@@ -4,11 +4,11 @@ import java.sql.SQLException;
 import java.time.LocalTime;
 
 import geneticalg.Group;
+import geneticalg.Lessons;
 import geneticalg.Module;
 import geneticalg.Professor;
 import geneticalg.Room;
 import geneticalg.Timeslot;
-import pojo.Lessons;
 
 public class Writer {
     private static final String INS_MODULE = "insert into Module (code, name, typeroomid) " +
@@ -43,7 +43,7 @@ public class Writer {
         db.write(INS_GROUP, (pStmt)->{
             try{
                 int idx = 1;
-                pStmt.setInt(idx++, gr.getGroupId());
+                pStmt.setInt(idx++, gr.getId());
                 pStmt.setInt(idx++, gr.getGroupSize());
             }catch(SQLException ex){
                 ex.toString();
@@ -91,7 +91,7 @@ public class Writer {
         db.write(INS_LESSONS, (pStmt)->{
             try{
                 int idx = 1;
-                pStmt.setInt(idx++, lss.getGrp().getId());
+                pStmt.setInt(idx++, lss.getGroup().getId());
                 pStmt.setInt(idx++, lss.getModule().getId());
                 pStmt.setInt(idx++, lss.getProfessor().getId());
                 pStmt.setInt(idx++, lss.getRoom().getId());

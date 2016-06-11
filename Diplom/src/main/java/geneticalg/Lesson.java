@@ -1,4 +1,4 @@
-package writer;
+package geneticalg;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;

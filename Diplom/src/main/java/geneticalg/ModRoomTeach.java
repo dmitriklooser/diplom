@@ -1,8 +1,4 @@
-package writer;
-
-import geneticalg.Module;
-import geneticalg.Professor;
-import geneticalg.Room;
+package geneticalg;
 
 public class ModRoomTeach {
 	

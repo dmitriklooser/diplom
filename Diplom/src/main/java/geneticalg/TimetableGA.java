@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import geneticalg.Room.TypeRoom;
-import writer.Lesson;
 import writer.TimetableWriter;
 
 /**

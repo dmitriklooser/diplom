@@ -36,7 +36,7 @@ public class Room {
 	 * 
 	 * @return roomId
 	 */
-	public int getRoomId() {
+	public int getId() {
 		return this.roomId;
 	}
 

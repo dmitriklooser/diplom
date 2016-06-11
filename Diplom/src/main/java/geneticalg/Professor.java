@@ -22,7 +22,7 @@ public class Professor {
      * 
      * @return professorId
      */
-    public int getProfessorId(){
+    public int getId(){
         return this.professorId;
     }
     

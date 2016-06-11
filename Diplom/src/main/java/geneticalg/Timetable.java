@@ -166,7 +166,7 @@ public class Timetable {
 		for (Group group : this.getGroupsAsArray()) {
 			int moduleIds[] = group.getModuleIds();
 			for (int moduleId : moduleIds) {
-				classes[classIndex] = new Clazz(classIndex, group.getGroupId(), moduleId);
+				classes[classIndex] = new Clazz(classIndex, group.getId(), moduleId);
 
 				// Add timeslot
 				classes[classIndex].addTimeslot(chromosome[chromosomePos]);

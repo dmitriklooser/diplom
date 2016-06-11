@@ -32,7 +32,7 @@ public class Module {
      * 
      * @return moduleId
      */
-    public int getModuleId(){
+    public int getId(){
         return this.moduleId;
     }
     
