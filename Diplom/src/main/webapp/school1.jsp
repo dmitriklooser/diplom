@@ -19,8 +19,7 @@
                        
               </div>
             <div class="rightCtrl">
-                 <input name="item1" id="item1" type="submit" value="Составить расписание"><br/><br/><br/>
-                 <input name="item2" id="item2" type="submit" value="Выйти из программы"><br/>               
+                 <input name="item1" id="item1" type="submit" value="Составить расписание">             
                 <br/>
                        
               </div>               
