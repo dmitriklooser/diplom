@@ -20,8 +20,8 @@ CREATE TABLE Grp
 
 CREATE TABLE Module (
 id serial,
-code name NOT NULL,
-name varchar(5) NOT NULL,
+code varchar(25) NOT NULL,
+name varchar(25) NOT NULL,
 typeRoom varchar(20),
 CONSTRAINT PK_Module PRIMARY KEY (id)
 );
@@ -109,3 +109,14 @@ INSERT INTO Timeslot (lessontime, day)
 		(13, 'SATURDAY'),
 		(15, 'SATURDAY'),
 		(17, 'SATURDAY');
+
+		INSERT INTO Module (code, name) 
+   VALUES ('com', 'computer science'),
+		('mat', 'mathematics'),
+		('eng', 'english'),
+		('his', 'history'),
+		('che', 'chemistry'),
+		('phy', 'physical education'),
+		('eco', 'ecology'),
+		('rus', 'russian'),
+		('dra', 'draw');
