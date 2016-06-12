@@ -1,6 +1,8 @@
 package db;
 
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,11 +22,11 @@ public class DB {
 		try{
 			DriverManager.registerDriver(new	org.postgresql.Driver());
 			String url = "jdbc:postgresql://localhost:5432/timetable";
-			Properties props = new Properties();
-			props.setProperty("user","postgres");
-			props.setProperty("password","postgre");
-			props.setProperty("ssl","false");
-			Connection conn = DriverManager.getConnection(url, props);
+//			Properties props = new Properties();
+//			props.setProperty("user","postgres");
+//			props.setProperty("password","postgre");
+//			props.setProperty("ssl","false");
+			Connection conn = DriverManager.getConnection(url, getDbProperties());
 			return conn;
 		}catch(SQLException ex){
 			ex.toString();
@@ -32,6 +34,16 @@ public class DB {
 		}
 	}
 	
+	private Properties getDbProperties(){
+		try{
+			 InputStream in = this.getClass().getResourceAsStream("db.properties");
+			 Properties dbProps = new Properties();
+			 dbProps.load(in);
+			 return dbProps;
+		}catch(IOException ex){
+			return null;
+		}
+	}
 	
 	public<T> List<T> read(String sql,  Function<ResultSet, T> func){
 		Connection conn = null;

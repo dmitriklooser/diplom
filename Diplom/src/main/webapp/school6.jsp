@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="/Diplom/styles.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Школьное расписание</title>
   </head>

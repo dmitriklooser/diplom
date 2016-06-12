@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="/Diplom/styles.css">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"  charset="UTF-8" >
     <title>Школьное расписание</title>
   </head>
@@ -12,7 +12,7 @@
     </div>
     <div class="body">
         <div class="form">
-        <form action="main" method="post">
+        <form action="main/next" method="post">
             <div class="leftCtrl">
                  <p><font size="5">Здравствуйте, данная программа поможет вам составить наиболее оптимальное школьное расписание (расписание занятий (уроков) в школе).</font></p>              
                 <br/>
