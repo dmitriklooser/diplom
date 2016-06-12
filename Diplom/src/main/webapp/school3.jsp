@@ -31,7 +31,7 @@
                  <input name="item9" id="item9" type="checkbox"> Экология<br/> 
                  <input name="item10" id="item10" type="checkbox"> Русский яз.<br/> 
                  <input name="item11" id="item11" type="checkbox"> Черчение<br/><br/><br/>
-                 <input name="item12" id="item12" type="submit" value="Сохранить">
+                 <input name="item12" id="item12" type="submit" value="Добавить">
                  
              </div>             
                                             

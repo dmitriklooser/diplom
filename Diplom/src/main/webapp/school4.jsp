@@ -28,7 +28,7 @@
                  <input name="item8" id="item8" type="checkbox"> Экология<br/> 
                  <input name="item9" id="item9" type="checkbox"> Русский яз.<br/> 
                  <input name="item10" id="item10" type="checkbox"> Черчение <br/><br/><br/>
-                 <input name="item11" id="item11" type="submit" value="Сохранить"><br/><br/><br/>
+                 <input name="item11" id="item11" type="submit" value="Добавить"><br/><br/><br/>
              </div>
                                             
               <div class="rightCtrl">

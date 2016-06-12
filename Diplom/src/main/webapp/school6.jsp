@@ -25,7 +25,7 @@
                  <input name="item3" id="item3" type="radio"> Лаборатория <br/> 
                  <input name="item3" id="item3" type="radio"> Спортзал <br/>
                  <input name="item3" id="item3" type="radio"> Компьютерный класс <br/><br/><br/>
-                 <input name="item4" id="item4" type="submit" value="Сохранить">
+                 <input name="item4" id="item4" type="submit" value="Добавить">
              </div>
                                             
               <div class="rightCtrl">

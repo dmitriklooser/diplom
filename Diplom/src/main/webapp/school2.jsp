@@ -36,8 +36,7 @@
                 </table>              
               </div>
                 <br/>             
-              <div class="rightCtrl">
-                  <input name="item12" id="item12" type="submit" value="Сохранить"><br/><br/><br/>
+              <div class="rightCtrl"><br/><br/><br/>
                   <input name="item13" id="item13" type="submit" value="Далее" ><br/><br/><br/>
                   <input name="item14" id="item14" type="submit" value="Выйти"><br/>            
                 <br/>

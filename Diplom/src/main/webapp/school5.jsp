@@ -33,7 +33,7 @@
                  <input name="item2" id="item2" type="radio"> Лаборатория <br/> 
                  <input name="item2" id="item2" type="radio"> Спортзал <br/>
                  <input name="item2" id="item2" type="radio"> Компьютерный класс <br/><br/><br/>
-                 <input name="item3" id="item3" type="submit" value="Сохранить">
+                 <input name="item3" id="item3" type="submit" value="Добавить">
                                 
              </div>
                                             
