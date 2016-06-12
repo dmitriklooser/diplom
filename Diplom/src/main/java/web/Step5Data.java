@@ -12,5 +12,14 @@ public class Step5Data extends StepData{
 	public void load(HttpServletRequest request) {
 		
 	}
+	@Override
+	public void save(HttpServletRequest request) {
+		
+	}
+
+	@Override
+	public void delete(HttpServletRequest request) {
+		
+	}
 
 }

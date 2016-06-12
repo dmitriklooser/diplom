@@ -13,6 +13,8 @@ import geneticalg.Professor;
 import geneticalg.Room;
 import geneticalg.Room.TypeRoom;
 import web.Cache;
+import web.Item.PairedItem;
+import web.StepData;
 import geneticalg.Timeslot;
 
 public class Reader {
@@ -24,6 +26,9 @@ public class Reader {
     private static final String READ_PROFESOR_IDS = "select professorId from ModProf where moduleId=";
     private static final String READ_MODULE_IDS = "select moduleId from GrpMod where groupId=";
     private static final String READ_ALL_LESSONS = "select groupId, moduleId, professorId, roomId, timeslotId from Lessons";
+    private static final String READ_GROUP_MODULES = "select groupid, moduleId from GrpMod";
+    
+    
     private DB db = new DB();
     
 	private int[] readIds(String sql){
@@ -46,8 +51,9 @@ public class Reader {
 										 int id = rs.getInt(idx++);
 										 String moduleCode = rs.getString(idx++);
 										 String module = rs.getString(idx++);
-										 TypeRoom typeRoom = TypeRoom.valueOf(rs.getString(idx++)); 
-										 Module md = new Module(id, moduleCode, module, typeRoom);
+										 String strTypeRoom = rs.getString(idx++);
+										 TypeRoom typeRoom = strTypeRoom != null ? TypeRoom.valueOf(strTypeRoom) : null; 
+										 Module md = new Module(id, moduleCode, StepData.fmt(moduleCode), typeRoom);
 										 int[] professorIds = readIds(READ_PROFESOR_IDS + id);
 										 md.setProfessorIds(professorIds);
 										return md;
@@ -82,7 +88,8 @@ public class Reader {
                                          int id = rs.getInt(idx++);
                                          String roomNumber = rs.getString(idx++); 
                                          int capacity = rs.getInt(idx++);
-                                         TypeRoom typeRoom = TypeRoom.valueOf(rs.getString(idx++));
+										 String strTypeRoom = rs.getString(idx++);
+										 TypeRoom typeRoom = strTypeRoom != null ? TypeRoom.valueOf(strTypeRoom) : null; 
                                          Room ro = new Room(id, roomNumber, capacity, typeRoom);
                                         return ro;
                                    }catch(SQLException ex){
@@ -146,6 +153,24 @@ public class Reader {
 									         }
 									       });
     }
+    
+    public List<PairedItem<Group, Module>> readAllGroupModules(Cache cache){
+        
+        return db.read(READ_GROUP_MODULES, (rs)->
+                                  {try{
+                                         int idx = 1;
+                                         int groupId = rs.getInt(idx++);
+                                         int moduleId = rs.getInt(idx++);
+                                         PairedItem<Group, Module> gmItem = 
+                                        		 	new PairedItem(cache.GROUP_CACHE.get(groupId), 
+                                        		 							cache.MODULE_CACHE.get(moduleId));
+                                         return gmItem;
+                                   }catch(SQLException ex){
+                                       return null;
+                                   }
+                                 });
+    }
+    
 }
 
 // class Reader 

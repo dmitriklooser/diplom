@@ -14,6 +14,8 @@
     <div class="body">
         <div class="form">
             <form action="" method="post">
+             <input type="hidden" name="step" id="step" value="STEP7"/>
+             <input type="hidden" name="action" id="action" value=""/>
              <div class="leftCtrl">
                  <p><font size="5">Расписание почти составлено. Выберите "сгенерировать новое расписание" </font><br>                                
                 

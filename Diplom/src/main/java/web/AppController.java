@@ -10,6 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 
 
 public class AppController extends HttpServlet{
+	public enum Action{
+		GO,
+		ADD,
+		DELETE,
+		RESET
+	}
+	
 	public enum Steps{
 		STEP1("/school1.jsp"),
 		STEP2("/school2.jsp"),
@@ -40,20 +47,38 @@ public class AppController extends HttpServlet{
 	
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
-		String action = req.getPathInfo();
-		if(action.equals("/next")){
+		Action action = Action.valueOf(req.getParameter("action"));
+		
+		if(action == Action.GO){
 			Steps currStep = getCurrentStep(req);
+			pageData.onSubmitPage(currStep, req);
 			Steps nextStep = getNextStep(currStep);
 			pageData.onLoadPage(nextStep, req);
 			forwardTo(nextStep.getUrl(), req, resp);
 			setCurrentStep(nextStep, req);
+		}
+		if(action == Action.RESET){
+			Steps currStep = Steps.STEP1;
+			forwardTo(currStep.getUrl(), req, resp);
+		}
+		if(action == Action.ADD){
+			Steps currStep = getCurrentStep(req);
+			pageData.onSubmitPage(currStep, req);
+			pageData.onLoadPage(currStep, req);
+			forwardTo(currStep.getUrl(), req, resp);
+		}
+		if(action == Action.DELETE){
+			Steps currStep = getCurrentStep(req);
+			pageData.onDelete(currStep, req);
+			pageData.onLoadPage(currStep, req);
+			forwardTo(currStep.getUrl(), req, resp);
 		}
 		
 	}
 
 	
 	private void forwardTo(String target, HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
-		getServletContext().getRequestDispatcher(target).forward(req, resp);
+		req.getRequestDispatcher(target).forward(req, resp);
 	}
 
 	@Override

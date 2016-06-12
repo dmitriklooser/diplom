@@ -14,6 +14,8 @@
     <div class="body">
         <div class="form">
             <form action="" method="post">
+              <input type="hidden" name="step" id="step" value="STEP6"/>
+              <input type="hidden" name="action" id="action" value=""/>
              <div class="leftCtrl">
                  <p><font size="5">Для каждой аудитории заполните поля номер комнаты, вместимость, укажите ее тип и нажмите "сохранить"</font><br>
                  <p><font size="5">№ комнаты:</font><br>

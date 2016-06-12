@@ -9,11 +9,12 @@ import geneticalg.Module;
 import geneticalg.Professor;
 import geneticalg.Room;
 import geneticalg.Timeslot;
+import web.Cache;
 
 public class Writer {
     private static final String INS_MODULE = "insert into Module (code, name, typeRoom) " +
                                              " values (?, ?, ?)";
-    private static final String INS_GROUP = "insert into Group (id, groupSize) " +
+    private static final String INS_GROUP = "insert into Grp (id, groupsize) " +
     										" values (?, ?)";
     private static final String INS_ROOM = "insert into Room (roomNumber, capacity, typeRoom) " +
             							   " values (?, ?, ?)";
@@ -26,12 +27,13 @@ public class Writer {
 
     private static final String UPD_TIMESLOT = "update Timeslot set inuse=? where id=?";
 
-
+    private static final String INS_GM_REL = "insert into grpmod (groupid, moduleid)  values(?, ?)";	
     
+    private static final String DEL_GM_REL = "delete from grpmod  where groupid=? and moduleid=?";
     
     private DB db = new DB();
 	
-	public void writeModule(final Module md){
+	public void writeModule(final Module md, Cache cache){
 		db.write(INS_MODULE, (pStmt)->{
 			try{
 				int idx = 1;
@@ -42,9 +44,10 @@ public class Writer {
 				ex.toString();
 			}
 		});
+		cache.MODULE_CACHE.store(md);
 	}
 	
-	public void writeGroup(final Group gr){
+	public void writeGroup(final Group gr, Cache cache){
         db.write(INS_GROUP, (pStmt)->{
             try{
                 int idx = 1;
@@ -54,9 +57,10 @@ public class Writer {
                 ex.toString();
             }
         });
+        cache.GROUP_CACHE.store(gr);
     }
 	
-	public void writeRoom(final Room ro){
+	public void writeRoom(final Room ro, Cache cache){
         db.write(INS_ROOM, (pStmt)->{
             try{
                 int idx = 1;
@@ -67,9 +71,10 @@ public class Writer {
                 ex.toString();
             }
         });
+        cache.ROOM_CACHE.store(ro);
     }
 	
-	public void writeProfessor(final Professor pro){
+	public void writeProfessor(final Professor pro, Cache cache){
         db.write(INS_PROFESSOR, (pStmt)->{
             try{
                 int idx = 1;
@@ -78,9 +83,10 @@ public class Writer {
                 ex.toString();
             }
         });
+        cache.PROFESSOR_CACHE.store(pro);
     }
 	
-	public void writeTimeslot(final Timeslot tmsl){
+	public void writeTimeslot(final Timeslot tmsl, Cache cache){
         db.write(INS_TIMESLOT, (pStmt)->{
             try{
                 int idx = 1;
@@ -91,9 +97,10 @@ public class Writer {
                 ex.toString();
             }
         });
+        cache.TIMESLOT_CACHE.store(tmsl);
     }
 	
-	public void updateTimeslot(final Timeslot tmsl){
+	public void updateTimeslot(final Timeslot tmsl, Cache cache){
         db.write(UPD_TIMESLOT, (pStmt)->{
             try{
                 int idx = 1;
@@ -103,6 +110,7 @@ public class Writer {
                 ex.toString();
             }
         });
+        cache.TIMESLOT_CACHE.store(tmsl);
 	}
 	
 	
@@ -120,5 +128,30 @@ public class Writer {
             }
         });
     }
+
+	public void addGMRelation(final Group grp, final Module module){
+        db.write(INS_GM_REL, (pStmt)->{
+            try{
+                int idx = 1;
+                pStmt.setInt(idx++, grp.getId());
+                pStmt.setInt(idx++, module.getId());
+            }catch(SQLException ex){
+                ex.toString();
+            }
+        });
+	}
+	
+	public void delGMRelation(final Group grp, final Module module){
+        db.write(DEL_GM_REL, (pStmt)->{
+            try{
+                int idx = 1;
+                pStmt.setInt(idx++, grp.getId());
+                pStmt.setInt(idx++, module.getId());
+            }catch(SQLException ex){
+                ex.toString();
+            }
+        });
+	}
+	
 	
 }// class Writer 

@@ -14,15 +14,16 @@
     </div>
     <div class="body">
         <div class="form">
-        <form action="main/next" method="post">
+        <form action="main" method="post" name="mainForm" id="mainForm">
             <input type="hidden" name="step" id="step" value="STEP1"/>
+            <input type="hidden" name="action" id="action" value=""/>
             <div class="leftCtrl">
                  <p><font size="5">Здравствуйте, данная программа поможет вам составить наиболее оптимальное школьное расписание (расписание занятий (уроков) в школе).</font></p>              
                 <br/>
                        
               </div>
             <div class="rightCtrl">
-                 <input name="item1" id="item1" type="submit" value="Составить расписание">             
+                 <input name="item1" id="item1" type="submit" value="Составить расписание" onclick="javascript:onSubmit('mainForm')">             
                 <br/>
                        
               </div>               

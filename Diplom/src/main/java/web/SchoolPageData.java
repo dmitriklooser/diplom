@@ -19,7 +19,16 @@ public class SchoolPageData {
 		StepData data = pageData.get(step);
 		data.load(req);
 	}
+
+	public void onSubmitPage(Steps step, HttpServletRequest req){
+		StepData data = pageData.get(step);
+		data.save(req);
+	}
 	
+	public void onDelete(Steps step, HttpServletRequest req){
+		StepData data = pageData.get(step);
+		data.delete(req);
+	}
 	
 	public void init(){
 		cache.MODULE_CACHE.load(); 
@@ -38,4 +47,5 @@ public class SchoolPageData {
 		pageData.put(Steps.STEP7, new Step7Data(cache));
 		pageData.put(Steps.STEP8, new Step8Data(cache));
 	}
+	
 }// class SchoolPageData 

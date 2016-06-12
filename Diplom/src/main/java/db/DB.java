@@ -29,7 +29,7 @@ public class DB {
 			Connection conn = DriverManager.getConnection(url, getDbProperties());
 			return conn;
 		}catch(SQLException ex){
-			ex.toString();
+			ex.printStackTrace(System.err);
 			return null;
 		}
 	}
@@ -41,6 +41,7 @@ public class DB {
 			 dbProps.load(in);
 			 return dbProps;
 		}catch(IOException ex){
+			ex.printStackTrace(System.err);
 			return null;
 		}
 	}
@@ -63,6 +64,7 @@ public class DB {
 			}
 			return items;
 		}catch(SQLException ex){
+			ex.printStackTrace(System.err);
 			return null;
 			
 		}finally{
@@ -84,12 +86,12 @@ public class DB {
 			setter.accept(pStmt);
 			pStmt.execute();
 		}catch(SQLException ex){
-			ex.toString();
+			ex.printStackTrace(System.err);
 		}finally{
 			try{
 				if(pStmt != null)pStmt.close();
 				if(conn != null)conn.close();
-			}catch(SQLException ex){}
+			}catch(SQLException ex){ex.printStackTrace(System.err);}
 		}
 	}
 	

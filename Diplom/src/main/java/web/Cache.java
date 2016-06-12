@@ -45,8 +45,8 @@ public static class Storage<K, T>{
 		this.dataProvider = dataProvider;
 	}
 	
-	public void store(K key, T value){
-		map.put(key, value);
+	public void store(T value){
+		map.put(getKey.apply(value), value);
 	}
 	public T get(K key){
 		return map.get(key);

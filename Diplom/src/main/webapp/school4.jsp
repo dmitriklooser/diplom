@@ -14,6 +14,8 @@
     <div class="body">
         <div class="form">
             <form action="" method="post">
+            <input type="hidden" name="step" id="step" value="STEP4"/>
+            <input type="hidden" name="action" id="action" value=""/>
              <div class="leftCtrl">
                 <p><font size="5">Для добавления преподавателя заполните поле ФИО. Поставьте галочки напротив предметов, которые он преподает и нажмите "сохранить"</font><br>
                 <p><font size="5">ФИО преподавателя:</font><br>

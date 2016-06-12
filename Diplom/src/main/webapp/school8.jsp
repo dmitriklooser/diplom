@@ -14,6 +14,8 @@
     <div class="body">
         <div class="form">
             <form action="" method="post">
+              <input type="hidden" name="step" id="step" value="STEP8"/>
+              <input type="hidden" name="action" id="action" value=""/>
              <div class="leftCtrl">
                  <p><font size="5">Расписание составлено! Выберите номер группы и нажмите "далее"</font><br>                 
                 

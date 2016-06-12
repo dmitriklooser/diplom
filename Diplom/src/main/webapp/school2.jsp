@@ -15,7 +15,9 @@
     </div>
     <div class="body">
         <div class="form">
-            <form action="" method="post">
+            <form action="" method="post" name="mainForm" id="mainForm">
+             <input type="hidden" name="step" id="step" value="STEP2"/>
+             <input type="hidden" name="action" id="action" value=""/>
              <div class="leftCtrl">
                 <p><font size="5">Поставьте галочки напротив дня недели и времени, выделенных для занятий и нажмите "сохранить".</font><br/><br/><br/>
                 <table width="100" border="2" align="center" cellpadding="4" cellspacing="0">
@@ -37,8 +39,8 @@
               </div>
                 <br/>             
               <div class="rightCtrl"><br/><br/><br/>
-                  <input name="item13" id="item13" type="submit" value="Далее" ><br/><br/><br/>
-                  <input name="item14" id="item14" type="submit" value="Выйти"><br/>            
+                  <input name="item13" id="item13" type="submit" value="Далее" onclick="javascript:onSubmit('mainForm')"><br/><br/><br/>
+                  <input name="item14" id="item14" type="submit" value="Выйти" onclick="javascript:onReset('resetForm')"><br/>            
                 <br/>
                            
               </div>               
