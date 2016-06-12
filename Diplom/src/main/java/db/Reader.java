@@ -20,7 +20,7 @@ public class Reader {
     private static final String READ_ALL_GROUP = "select id, groupSize from Grp";
     private static final String READ_ALL_ROOM = "select id, number, capacity, typeRoom from Room";
     private static final String READ_ALL_PROFESSOR = "select id, name from Professor";
-    private static final String READ_ALL_TIMESLOT = "select id, lessontime, day from Timeslot";
+    private static final String READ_ALL_TIMESLOT = "select id, lessontime, day, inuse from Timeslot";
     private static final String READ_PROFESOR_IDS = "select professorId from ModProf where moduleId=";
     private static final String READ_MODULE_IDS = "select moduleId from GrpMod where groupId=";
     private static final String READ_ALL_LESSONS = "select groupId, moduleId, professorId, roomId, timeslotId from Lessons";
@@ -113,8 +113,10 @@ public class Reader {
                                          int idx = 1;
                                          int id = rs.getInt(idx++);
                                          LocalTime time = LocalTime.of(rs.getInt(idx++), 0);
-                                         DayOfWeek day = DayOfWeek.valueOf(rs.getString(idx++)); 
+                                         DayOfWeek day = DayOfWeek.valueOf(rs.getString(idx++));
+                                         boolean inUse = rs.getBoolean(idx++);
                                          Timeslot ts = new Timeslot(id, time, day);
+                                         ts.setInUse(inUse);
                                         return ts;
                                    }catch(SQLException ex){
                                        return null;

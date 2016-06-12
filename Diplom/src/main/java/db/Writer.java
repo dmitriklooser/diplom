@@ -19,8 +19,8 @@ public class Writer {
             " values (?, ?, ?)";
     private static final String INS_PROFESSOR = "insert into Professor (professorName) " +
             " values (?)";
-    private static final String INS_TIMESLOT = "insert into Timeslot (lessontime, day) " +
-            " values (?, ?)";
+    private static final String INS_TIMESLOT = "insert into Timeslot (lessontime, day, inuse) " +
+            " values (?, ?, ?)";
     private static final String INS_LESSONS = "insert into Lesson (groupid, moduleid, professorid, roomid, timeslotid) " +
             " values (?, ?, ?, ?, ?)";
 
@@ -81,6 +81,7 @@ public class Writer {
                 int idx = 1;
                 pStmt.setInt(idx++, tmsl.getTime().getHour());
                 pStmt.setString(idx++, tmsl.getDay().name());
+                pStmt.setBoolean(idx++, tmsl.isInUse());
             }catch(SQLException ex){
                 ex.toString();
             }

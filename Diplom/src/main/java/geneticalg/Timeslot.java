@@ -15,7 +15,7 @@ public class Timeslot {
     private final int timeslotId;
     private final LocalTime time;
     private final DayOfWeek day;
- 
+    private boolean inUse;
 
     /**
      * Initalize new Timeslot
@@ -50,4 +50,14 @@ public class Timeslot {
     public DayOfWeek getDay(){
         return this.day;
     }
+
+	public boolean isInUse() {
+		return inUse;
+	}
+
+	public void setInUse(boolean inUse) {
+		this.inUse = inUse;
+	}
+    
+    
 }
