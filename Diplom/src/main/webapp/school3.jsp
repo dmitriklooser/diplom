@@ -1,11 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page isELIgnored="false" %>
+<%
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+    response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+    response.setDateHeader("Expires", 0); // Proxies.
+%>
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="/Diplom/styles.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Школьное расписание</title>
-  </head>
-  
+<%@ include file="/HtmlHeader.jsp"%>  
   <body>
     <div class="header"><p class="stroke" align="center"><font size="8" color="c6fbb3" face="Arial">Подготовка нового расписания</font></p>
     </div>
