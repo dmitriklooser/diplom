@@ -84,7 +84,6 @@ public class AppController extends HttpServlet{
 	}
 
 	private void setCurrentStep(Steps step, HttpServletRequest req){
-		//int pos= Arrays.asList(Steps.values()).indexOf(step);
 		req.getSession().setAttribute(ATTR_STEP, step);
 	}
 }// class AppController 
