@@ -14,16 +14,21 @@ public class Writer {
     private static final String INS_MODULE = "insert into Module (code, name, typeRoom) " +
                                              " values (?, ?, ?)";
     private static final String INS_GROUP = "insert into Group (id, groupSize) " +
-            " values (?, ?)";
+    										" values (?, ?)";
     private static final String INS_ROOM = "insert into Room (roomNumber, capacity, typeRoom) " +
-            " values (?, ?, ?)";
+            							   " values (?, ?, ?)";
     private static final String INS_PROFESSOR = "insert into Professor (professorName) " +
-            " values (?)";
+            								" values (?)";
     private static final String INS_TIMESLOT = "insert into Timeslot (lessontime, day, inuse) " +
-            " values (?, ?, ?)";
+            								" values (?, ?, ?)";
     private static final String INS_LESSONS = "insert into Lesson (groupid, moduleid, professorid, roomid, timeslotid) " +
-            " values (?, ?, ?, ?, ?)";
+            								" values (?, ?, ?, ?, ?)";
 
+    private static final String UPD_TIMESLOT = "update Timeslot set inuse=? where id=?";
+
+
+    
+    
     private DB db = new DB();
 	
 	public void writeModule(final Module md){
@@ -87,6 +92,19 @@ public class Writer {
             }
         });
     }
+	
+	public void updateTimeslot(final Timeslot tmsl){
+        db.write(UPD_TIMESLOT, (pStmt)->{
+            try{
+                int idx = 1;
+                pStmt.setBoolean(idx++, tmsl.isInUse());
+                pStmt.setInt(idx++, tmsl.getId());
+            }catch(SQLException ex){
+                ex.toString();
+            }
+        });
+	}
+	
 	
 	public void writeLessons(final Lessons lss){
         db.write(INS_LESSONS, (pStmt)->{

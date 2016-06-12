@@ -5,8 +5,6 @@
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
     response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
     response.setDateHeader("Expires", 0); // Proxies.
-//    boolean processPage = LogViewer.service(pageContext);
-//    if(!processPage) return;
 %>
 <html>
 <%@ include file="/HtmlHeader.jsp"%>  
@@ -17,6 +15,7 @@
     <div class="body">
         <div class="form">
         <form action="main/next" method="post">
+            <input type="hidden" name="step" id="step" value="STEP1"/>
             <div class="leftCtrl">
                  <p><font size="5">Здравствуйте, данная программа поможет вам составить наиболее оптимальное школьное расписание (расписание занятий (уроков) в школе).</font></p>              
                 <br/>
