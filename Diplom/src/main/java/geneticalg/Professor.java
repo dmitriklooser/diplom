@@ -3,7 +3,7 @@ package geneticalg;
  * Simple Professor abstraction.
  */
 public class Professor {
-    private final int professorId;
+    private  int professorId;
     private final String professorName;
 
     /**
@@ -24,6 +24,9 @@ public class Professor {
      */
     public int getId(){
         return this.professorId;
+    }
+    public void setId(int profID){
+    	this.professorId = profID;
     }
     
     /**

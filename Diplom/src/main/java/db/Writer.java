@@ -18,8 +18,8 @@ public class Writer {
     										" values (?, ?)";
     private static final String INS_ROOM = "insert into Room (roomNumber, capacity, typeRoom) " +
             							   " values (?, ?, ?)";
-    private static final String INS_PROFESSOR = "insert into Professor (professorName) " +
-            								" values (?)";
+    private static final String INS_PROFESSOR = "insert into Professor (id, name) " +
+            								" values (?,?)";
     private static final String INS_TIMESLOT = "insert into Timeslot (lessontime, day, inuse) " +
             								" values (?, ?, ?)";
     private static final String INS_LESSONS = "insert into Lessons (groupid, moduleid, professorid, roomid, timeslotid) " +
@@ -81,7 +81,10 @@ public class Writer {
         db.write(INS_PROFESSOR, (pStmt)->{
             try{
                 int idx = 1;
+                int professorId = db.getID("Professor");
+                pStmt.setInt(idx++, professorId);
                 pStmt.setString(idx++, pro.getProfessorName());
+                pro.setId(professorId);
             }catch(SQLException ex){
                 ex.toString();
             }

@@ -47,6 +47,7 @@ public class AppController extends HttpServlet{
 	
 	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException{
+		req.setCharacterEncoding("UTF-8"); 
 		Action action = Action.valueOf(req.getParameter("action"));
 		
 		if(action == Action.GO){
