@@ -45,12 +45,15 @@ public class Step3Data extends StepData{
 		Group group = getCache().GROUP_CACHE.get(Integer.valueOf(groupNum));
 		if(group == null){
 			group = new Group(grpID, grpSize);
-			writer.writeGroup(group, getCache());
 		}
 		List<Module> selectedModules = 
 									getIDParams(request).stream()
 																	.map(id->getCache().MODULE_CACHE.get(id))
 																	.collect(Collectors.toList());
+		
+		int[] modIDs = selectedModules.stream().mapToInt(m->m.getId()).toArray(); 
+		group.setModuleIds(modIDs);
+		writer.writeGroup(group, getCache());
 		Group groupToSotre = group;
 		selectedModules.forEach(module->writer.addGMRelation(groupToSotre, module));
 	}
@@ -82,14 +85,5 @@ public class Step3Data extends StepData{
 	private List<PairedItem<Group, Module>> readAllGroupModules(){
 		List<PairedItem<Group, Module>> gmList = reader.readAllGroupModules(getCache());
 		return gmList;
-//		Map<Group, List<Module>> result = new HashMap<>();
-//		Map<Group, List<PairedItem<Group, Module>>> tmp = 
-//					gmList.stream().collect(Collectors.groupingBy(pItem->pItem.getKeyItem() ,Collectors.toList()));
-//		for(Group grp : tmp.keySet()){
-//			result.put(grp, tmp.get(grp).stream()
-//													 .map(pItem->pItem.getGroupedItem())
-//													 .collect(Collectors.toList()) );
-//		}
-//		return result;
 	}
 }

@@ -92,8 +92,8 @@ public class Timetable {
 	 * @param roomName
 	 * @param capacity
 	 */
-	public void addRoom(int roomId, String roomName, int capacity, TypeRoom typeRoom) {
-		this.rooms.put(roomId, new Room(roomId, roomName, capacity, typeRoom));
+	public void addRoom(Room room) {
+		this.rooms.put(room.getId(), room);
 	}
 
 	/**
@@ -102,8 +102,8 @@ public class Timetable {
 	 * @param professorId
 	 * @param professorName
 	 */
-	public void addProfessor(int professorId, String professorName) {
-		this.professors.put(professorId, new Professor(professorId, professorName));
+	public void addProfessor(Professor prof) {
+		this.professors.put(prof.getId(), prof);
 	}
 
 	/**
@@ -138,8 +138,8 @@ public class Timetable {
 	 * @param timeslotId
 	 * @param timeslot
 	 */
-	public void addTimeslot(int timeslotId, LocalTime time, DayOfWeek day) {
-		this.timeslots.put(timeslotId, new Timeslot(timeslotId, time, day));
+	public void addTimeslot(Timeslot tSl) {
+		this.timeslots.put(tSl.getId(), tSl);
 	}
 
 	/**

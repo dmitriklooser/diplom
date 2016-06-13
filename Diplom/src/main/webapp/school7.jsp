@@ -22,8 +22,8 @@
              </div>
                                             
               <div class="rightCtrl">
-                 <input name="item15" id="item15" type="submit" value="сгенерировать новое расписание"><br/><br/><br/>
-                 <input name="item16" id="item16" type="submit" value="Выйти"><br/>
+                 <input name="item15" id="item15" type="submit" value="сгенерировать новое расписание" onclick="javascript:onSubmit('mainForm');"><br/><br/><br/>
+                 <input name="item16" id="item16" type="submit" value="Выйти"  onclick="javascript:onReset('mainForm')"><br/>
                           
               </div>               
             </form>

@@ -75,7 +75,7 @@ public class DB {
 			}catch(SQLException ex){}
 		}
 	}
-	
+
 	
 	public void write(String sql, Consumer<PreparedStatement> setter){
 		Connection conn = null;
@@ -95,10 +95,28 @@ public class DB {
 		}
 	}
 	
-	
-	
-	public void run(String sql){
+	public int getID(String table){
+		String sql = "select max(id)+1 as id from " + table;
 		Connection conn = null;
 		Statement stmt = null;
+		ResultSet rs = null;
+		try{
+			conn = getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			return rs.next() ? rs.getInt(1) : 0;
+			
+		}catch(SQLException ex){
+			ex.printStackTrace(System.err);
+			return -1;
+			
+		}finally{
+			try{
+				if(rs != null)rs.close();
+				if(stmt != null)stmt.close();
+				if(conn != null)conn.close();
+			}catch(SQLException ex){}
+		}
+		
 	}
 }//class DB 

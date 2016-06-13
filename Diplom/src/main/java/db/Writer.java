@@ -22,14 +22,17 @@ public class Writer {
             								" values (?)";
     private static final String INS_TIMESLOT = "insert into Timeslot (lessontime, day, inuse) " +
             								" values (?, ?, ?)";
-    private static final String INS_LESSONS = "insert into Lesson (groupid, moduleid, professorid, roomid, timeslotid) " +
+    private static final String INS_LESSONS = "insert into Lessons (groupid, moduleid, professorid, roomid, timeslotid) " +
             								" values (?, ?, ?, ?, ?)";
 
     private static final String UPD_TIMESLOT = "update Timeslot set inuse=? where id=?";
 
     private static final String INS_GM_REL = "insert into grpmod (groupid, moduleid)  values(?, ?)";	
-    
     private static final String DEL_GM_REL = "delete from grpmod  where groupid=? and moduleid=?";
+
+    private static final String INS_PM_REL = "insert into modprof (professorid, moduleid)  values(?, ?)";	
+    private static final String DEL_PM_REL = "delete from modprof where professorid=? and moduleid=?";
+    private static final String DEL_ALL_LESSONS = "delete from lessons";
     
     private DB db = new DB();
 	
@@ -129,6 +132,7 @@ public class Writer {
         });
     }
 
+	/* add Group-Module relation */
 	public void addGMRelation(final Group grp, final Module module){
         db.write(INS_GM_REL, (pStmt)->{
             try{
@@ -140,7 +144,7 @@ public class Writer {
             }
         });
 	}
-	
+	/* remove Group-Module relation */
 	public void delGMRelation(final Group grp, final Module module){
         db.write(DEL_GM_REL, (pStmt)->{
             try{
@@ -153,5 +157,34 @@ public class Writer {
         });
 	}
 	
+	/* add Professor-Module relation */
+	public void addPMRelation(final Professor prof, final Module module){
+        db.write(INS_PM_REL, (pStmt)->{
+            try{
+                int idx = 1;
+                pStmt.setInt(idx++, prof.getId());
+                pStmt.setInt(idx++, module.getId());
+            }catch(SQLException ex){
+                ex.toString();
+            }
+        });
+	}
+	/* remove Professor-Module relation */
+	public void delPMRelation(final Professor prof, final Module module){
+        db.write(DEL_PM_REL, (pStmt)->{
+            try{
+                int idx = 1;
+                pStmt.setInt(idx++, prof.getId());
+                pStmt.setInt(idx++, module.getId());
+            }catch(SQLException ex){
+                ex.toString();
+            }
+        });
+	}
+
+	public void clearTimetable(){
+        db.write(DEL_ALL_LESSONS, (pStmt)->{});
+	}
+
 	
 }// class Writer 

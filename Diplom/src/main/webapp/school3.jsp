@@ -28,17 +28,6 @@
                 <c:forEach var="modue" items="${modules}">
                     <input name="${modue.id}" id="${modue.id}" type="checkbox"> ${modue.name} <br/>
                 </c:forEach>
-                <!-- 
-                 <input name="item3" id="item3" type="checkbox"> Информатика <br/> 
-                 <input name="item4" id="item4" type="checkbox"> Математика <br/> 
-                 <input name="item5" id="item5" type="checkbox"> Английский яз. <br/> 
-                 <input name="item6" id="item6" type="checkbox"> История <br/> 
-                 <input name="item7" id="item7" type="checkbox"> Химия <br/> 
-                 <input name="item8" id="item8" type="checkbox"> Физкультура<br/> 
-                 <input name="item9" id="item9" type="checkbox"> Экология<br/> 
-                 <input name="item10" id="item10" type="checkbox"> Русский яз.<br/> 
-                 <input name="item11" id="item11" type="checkbox"> Черчение<br/><br/><br/>
-                 -->
                  <input name="item12" id="item12" type="submit" value="Добавить" onclick="javascript:onAdd('mainForm')">
              </div>             
                                             
@@ -52,64 +41,9 @@
 		                    <th width="100"><c:out value="${gmPair.keyItem.id}"/></th>
 		                    <th width="100"><c:out value="${gmPair.keyItem.groupSize}"/></th>
 		                    <th width="350">${gmPair.groupedItem.moduleName}</th>
-		                    <th><input name="gm_${gmPair.keyItem.id}_${gmPair.groupedItem.id}" id="item7" type="checkbox"><br/></th>
+		                    <th><input name="gm_${gmPair.keyItem.id}_${gmPair.groupedItem.id}" id="gm_${gmPair.keyItem.id}_${gmPair.groupedItem.id}" type="checkbox"><br/></th>
 		                    </tr>
                       </c:forEach>
-                 <!-- 
-	                <tr>
-	                <th width="100">1</th>
-	                <th width="100">20</th>
-	                <th width="350">математика</th>
-	                <th><input name="item7" id="item7" type="checkbox"><br/></th>
-	                </tr>
-	                <tr>
-	                <td align="center">1</td>
-	                <td align="center">20</td>
-	                <td align="center">математика</td>
-	                <td align="center"><input name="item7" id="item7" type="checkbox"><br/></td>
-	                </tr>
-	                <tr>
-	                <td align="center">1</td>
-	                <td align="center">20</td>
-	                <td align="center">математика</td>
-	                <td align="center"><input name="item7" id="item7" type="checkbox"><br/></td>
-	                </tr>
-	                <tr>
-	                <td align="center">1</td>
-	                <td align="center">20</td>
-	                <td align="center">математика</td>
-	                <td align="center"><input name="item7" id="item7" type="checkbox"><br/></td>
-	                </tr>
-	                <tr>
-	                <td align="center">1</td>
-	                <td align="center">20</td>
-	                <td align="center">математика</td>
-	                <td align="center"><input name="item7" id="item7" type="checkbox"><br/></td>
-	                </tr>
-	                <tr>
-	                <td align="center">1</td>
-	                <td align="center">20</td>
-	                <td align="center">математика</td>
-	                <td align="center"><input name="item7" id="item7" type="checkbox"><br/></td>
-	                </tr>
-	                <tr>
-	                <td align="center">1</td>
-	                <td align="center">20</td>
-	                <td align="center">математика</td>
-	                <td align="center"><input name="item7" id="item7" type="checkbox"><br/></td>
-	                </tr>
-	                <tr>
-	                <td align="center">1</td>
-	                <td align="center">20</td>
-	                <td align="center">математика</td>
-	                <td align="center"><input name="item7" id="item7" type="checkbox"><br/></td>
-	                </tr>
-	                <tr>
-	                <td align="center">1</td>
-	                <td align="center">20</td>
-	                <td align="center">математика</td>
-	                <td align="center"><input name="item7" id="item7" type="checkbox"><br/></td>
-                </tr> -->
                 </table>
                 </div>
                 <br/>

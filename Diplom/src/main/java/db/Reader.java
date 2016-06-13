@@ -26,7 +26,8 @@ public class Reader {
     private static final String READ_PROFESOR_IDS = "select professorId from ModProf where moduleId=";
     private static final String READ_MODULE_IDS = "select moduleId from GrpMod where groupId=";
     private static final String READ_ALL_LESSONS = "select groupId, moduleId, professorId, roomId, timeslotId from Lessons";
-    private static final String READ_GROUP_MODULES = "select groupid, moduleId from GrpMod";
+    private static final String READ_GROUP_MODULES = "select groupid, moduleId from grpmod";
+    private static final String READ_PROF_MODULES = "select moduleid, professorid from modprof";
     
     
     private DB db = new DB();
@@ -170,7 +171,25 @@ public class Reader {
                                    }
                                  });
     }
+
     
+    public List<PairedItem<Professor, Module>> readAllProfModules(Cache cache){
+        
+        return db.read(READ_PROF_MODULES, (rs)->
+                                  {try{
+                                         int idx = 1;
+                                         int moduleId = rs.getInt(idx++);
+                                         int professorId = rs.getInt(idx++);
+                                         PairedItem<Professor, Module> gmItem = 
+                                        		 	new PairedItem(cache.PROFESSOR_CACHE.get(professorId), 
+                                        		 							cache.MODULE_CACHE.get(moduleId));
+                                         return gmItem;
+                                   }catch(SQLException ex){
+                                       return null;
+                                   }
+                                 });
+    }
+
 }
 
 // class Reader 

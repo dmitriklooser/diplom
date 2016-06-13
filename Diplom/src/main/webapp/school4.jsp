@@ -13,14 +13,18 @@
     </div>
     <div class="body">
         <div class="form">
-            <form action="" method="post">
+            <form action="" method="post" name="mainForm" id="mainForm">
             <input type="hidden" name="step" id="step" value="STEP4"/>
             <input type="hidden" name="action" id="action" value=""/>
              <div class="leftCtrl">
                 <p><font size="5">Для добавления преподавателя заполните поле ФИО. Поставьте галочки напротив предметов, которые он преподает и нажмите "сохранить"</font><br>
                 <p><font size="5">ФИО преподавателя:</font><br>
-                <input name="item1" id="item1" type="text" value=""><br/>
+                <input name="profName" id="profName" type="text" value=""><br/>
                 <p><font size="5">Преподаваемые дисциплины:</font><br>
+	                <c:forEach var="modue" items="${modules}">
+	                    <input name="${modue.id}" id="${modue.id}" type="checkbox"> ${modue.name} <br/>
+	                </c:forEach>
+                <!-- 
                  <input name="item2" id="item2" type="checkbox"> Информатика <br/> 
                  <input name="item3" id="item3" type="checkbox"> Математика <br/> 
                  <input name="item4" id="item4" type="checkbox"> Английский яз. <br/> 
@@ -30,7 +34,8 @@
                  <input name="item8" id="item8" type="checkbox"> Экология<br/> 
                  <input name="item9" id="item9" type="checkbox"> Русский яз.<br/> 
                  <input name="item10" id="item10" type="checkbox"> Черчение <br/><br/><br/>
-                 <input name="item11" id="item11" type="submit" value="Добавить"><br/><br/><br/>
+                 -->
+                 <input name="item11" id="item11" type="submit" value="Добавить" onclick="javascript:onAdd('mainForm')"><br/><br/><br/>
              </div>
                                             
               <div class="rightCtrl">
@@ -38,6 +43,14 @@
                  <p><font size="5">Преподаватель:<span style='padding-left:120px;'></span> дисциплина:</font>
                  <div class="scroll">
                  <table width="550" border="2" align="center" cellpadding="4" cellspacing="0">
+                    <c:forEach var="pmPair" items="${pmList}">
+		                <tr>
+    		                <th width="225"><c:out value="${pmPair.keyItem.professorName}"/></th>
+	       	                <th width="225"><c:out value="${pmPair.groupedItem.moduleName}"/></th>
+		                    <td align="center"><input name="pm_${gmPair.keyItem.id}_${gmPair.groupedItem.id}" id="pm_${gmPair.keyItem.id}_${gmPair.groupedItem.id}" type="checkbox"><br/></td>
+		                </tr>
+                    </c:forEach>
+                 <!-- 
                 <tr>
                 <th width="225">З.Л.Ложечкин</th>
                 <th width="225">Черчение</th>
@@ -88,15 +101,15 @@
                 <td align="center">Черчение</td>
                 <td align="center"><input name="item7" id="item7" type="checkbox"><br/></td>
                 </tr>
-                                
+                   -->             
                 </table>
                 </div>
                 <br/>
                  <div class="right">
-                 <input name="item13" id="item13" type="submit" value="удалить отмеченные"></div>
+                 <input name="item13" id="item13" type="submit" value="удалить отмеченные"  onclick="javascript:onDelete('mainForm')"></div>
                  <br/><br/><br/>
-                 <input name="item12" id="item12" type="submit" value="Далее"><br/><br/><br/>
-                 <input name="item13" id="item13" type="submit" value="Выйти"><br/>            
+                 <input name="item12" id="item12" type="submit" value="Далее" onclick="javascript:onSubmit('mainForm');"><br/><br/><br/>
+                 <input name="item13" id="item13" type="submit" value="Выйти" onclick="javascript:onReset('mainForm')"><br/>            
                 <br/>
                           
               </div>               

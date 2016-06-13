@@ -12,4 +12,31 @@
                java.lang.String formatTime(java.time.LocalTime)
           </function-signature>
      </function>
+
+     <function>
+          <name>formatLessonTime</name>
+          <function-class>web.WebTool</function-class>
+          <function-signature>
+               java.lang.String formatLessonTime(java.time.LocalTime)
+          </function-signature>
+     </function>
+     
+     <function>
+          <name>filterByTime</name>
+          <function-class>web.WebTool</function-class>
+          <function-signature>
+               java.util.List filterByTime(java.util.List, java.time.LocalTime)
+          </function-signature>
+     </function>
+
+     <function>
+          <name>filterByDT</name>
+          <function-class>web.WebTool</function-class>
+          <function-signature>
+               geneticalg.Lessons filterByDT(java.util.List, java.time.DayOfWeek, java.time.LocalTime)
+          </function-signature>
+     </function>
+
+     
+     
 </taglib>

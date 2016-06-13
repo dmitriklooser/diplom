@@ -35,7 +35,7 @@
                  <input name="item2" id="item2" type="radio"> Лаборатория <br/> 
                  <input name="item2" id="item2" type="radio"> Спортзал <br/>
                  <input name="item2" id="item2" type="radio"> Компьютерный класс <br/><br/><br/>
-                 <input name="item3" id="item3" type="submit" value="Добавить">
+                 <input name="item3" id="item3" type="submit" value="Добавить" onclick="javascript:onAdd('mainForm')">
                                 
              </div>
                                             
@@ -94,8 +94,8 @@
                 <br/>
                  <div class="right">
                  <input name="item13" id="item13" type="submit" value="удалить отмеченные"></div><br/><br/>
-                 <input name="item4" id="item4" type="submit" value="Далее"><br/><br/><br/>
-                 <input name="item5" id="item5" type="submit" value="Выйти"><br/>
+                 <input name="item4" id="item4" type="submit" value="Далее" onclick="javascript:onSubmit('mainForm');"><br/><br/><br/>
+                 <input name="item5" id="item5" type="submit" value="Выйти" onclick="javascript:onReset('mainForm')"><br/>
                                            
               </div>               
             </form>

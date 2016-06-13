@@ -35,7 +35,7 @@ CONSTRAINT FK_GrpMod_Module FOREIGN KEY (moduleId) REFERENCES Module(id)
 );
 
 CREATE TABLE Professor (
-id serial,
+id integer NOT NULL,
 name name NOT NULL,
 CONSTRAINT PK_Professor PRIMARY KEY (id)
 );
@@ -49,7 +49,7 @@ CONSTRAINT FK_ModProf_Professor FOREIGN KEY (professorId) REFERENCES Professor(i
 );
 
 CREATE TABLE Room (
-id serial,
+id integer NOT NULL,
 number integer NOT NULL,
 capacity smallint NOT NULL,
 typeRoom varchar(20),
@@ -70,7 +70,6 @@ moduleId integer,
 professorId integer,
 roomId integer,
 timeslotId integer,
-CONSTRAINT PK_Lessons PRIMARY KEY (groupId),
 CONSTRAINT FK_Lessons_Grp FOREIGN KEY (groupId) REFERENCES Grp(id),
 CONSTRAINT FK_Lessons_Timeslot FOREIGN KEY (timeslotId) REFERENCES Timeslot(id),
 CONSTRAINT FK_Lessons_Module FOREIGN KEY (moduleId) REFERENCES Module(id),

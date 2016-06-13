@@ -10,9 +10,9 @@ body {
 .scroll { 
 	border: 1px solid gray;
 	overflow: scroll;
-    scrollbar-arrow-color: #fff; /* Цвет стрелок */
-    scrollbar-face-color: blue; /* Цвет полосы прокрутки */
-    background: white; /* Цвет фона */
+    scrollbar-arrow-color: #fff; /* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
+    scrollbar-face-color: blue; /* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ */
+    background: white; /* пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ */
     height: 30%; 
    }
 
@@ -63,4 +63,16 @@ body {
   width: 40%;
   margin-right: 40px;
   padding: 10px; 
+}
+
+.ttable{
+    border: 1px solid black;
+    table-layout: fixed;
+    width: 1600px;
+}
+
+th.ttable , td.ttable {
+    border: 1px solid black;
+    overflow: hidden;
+    width: 46px;
 }

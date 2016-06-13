@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="timetable" prefix="tt"%>
 <%@ page isELIgnored="false" %>
 <%
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
@@ -23,22 +24,20 @@
                                             
               <div class="rightCtrl">
                  <p><font size="5">№ группы:</font>
-                 <select name="group">
-                  <option value="1" selected>1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
+                 <select name="group" id="group">
+                   <c:forEach var="group" items="${groups}">
+                     <option value="${group.id}"><c:out value="${group.id}"/></option> 
+                   </c:forEach>
                 </select>
                 <br>
-                 <input name="item15" id="item15" type="submit" value="Далее"><br/><br/><br/>
-                 <input name="item16" id="item16" type="submit" value="Выйти"><br/>
+                 <input name="item15" id="item15" type="submit" value="Далее" onclick="javascript:onAdd('mainForm')"><br/><br/><br/>
+                 <input name="item16" id="item16" type="submit" value="Выйти" onclick="javascript:onReset('mainForm')"><br/>
                           
               </div>               
             </form>
-            <table width="900" border="3" align="center" cellpadding="4" cellspacing="0">
+            <table width="900" border="3" align="center" cellpadding="4" cellspacing="0" class="ttable">
             <tr>
-                <th colspan=11>Группа номер</th>
+                <th colspan=13><c:out value="${crGroup != null ? crGroup:'N'}"/></th>
             </tr>
             <tr>
                 <th width="600">время\день недели</th>
@@ -47,7 +46,38 @@
                 <th colspan=2>среда</th>
                 <th colspan=2>четверг</th>
                 <th colspan=2>пятница</th>
+                <th colspan=2>суббота</th>
             </tr>
+            <c:forEach var="tStart" items="${times}">
+                <c:set var="timeOn" scope="page" value="true"/>
+                    <tr>
+	                <c:forEach var="wd" items="${weekDays}">
+	                <c:set var="lss" scope="request" value="${tt:filterByDT(lessons, wd, tStart)}"/>
+	                     <c:if test="${timeOn eq 'true'}">
+	                        <td rowspan=3>${tt:formatLessonTime(tStart)}</td>
+	                        <c:set var="timeOn" scope="page" value="false"/>
+	                      </c:if>  	                
+		                    <td>предмет</td>
+   	                        <td><c:out value="${lss != null ? lss.module.moduleName:' '}" escapeXml="true"/></td>
+	                </c:forEach>
+	                </tr>
+                    <tr>
+                    <c:forEach var="wd" items="${weekDays}">
+                    <c:set var="lss" scope="request" value="${tt:filterByDT(lessons, wd, tStart)}"/>
+                            <td>комната</td>
+                            <td><c:out value="${lss!=null?lss.room.roomNumber:''}" escapeXml="true"/></td>
+                    </c:forEach>
+                    </tr>
+                    <tr>
+                    <c:forEach var="wd" items="${weekDays}">
+                    <c:set var="lss" scope="request" value="${tt:filterByDT(lessons, wd, tStart)}"/>
+                            <td>учитель</td>
+                            <td><c:out value="${lss!=null?lss.professor.professorName:''}" escapeXml="true"/></td>
+                    </c:forEach>
+                    </tr>
+            </c:forEach>
+
+            <!-- 
             <tr>
                 <td rowspan=3>9:00 - 11:00</td>
                 <td>предмет</td>
@@ -159,6 +189,7 @@
                 <td>преподаватель</td>
                 <td>п5</td>
             </tr>
+            -->
         </table>
         </div>  
     </div>
